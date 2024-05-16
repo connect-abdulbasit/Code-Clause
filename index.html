@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Platform</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="https://knockknockwhoisthere.files.wordpress.com/2018/03/dotblog.png?w=640"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="content">
+        <h1 class="heading">
+          <span class="small">Welcome in the world of</span>
+          Blog
+          <span class="no-fill">Writing</span>
+        </h1>
+        <button class="btn">Write a blog</button>
+      </div>
+    </header>
+    <div class="AddBlog">
+      <div class="form">
+        <div class="close">
+          <div>X</div>
+        </div>
+        <div class="title">Welcome</div>
+        <div class="subtitle">Let's add your blog!</div>
+        <div class="input-container ic1">
+          <input id="Title" class="input" type="text" placeholder=" " />
+          <div class="cut"></div>
+          <label for="Title" class="placeholder">Title</label>
+        </div>
+        <div class="input-container ic2">
+          <input id="MainPoints" class="input" type="text" placeholder=" " />
+          <div class="cut"></div>
+          <label for="MainPoints" class="placeholder">Key Points</label>
+        </div>
+        <div class="input-container ic2 ic3">
+          <input
+            id="Image"
+            class="input file-input"
+            type="file"
+            placeholder=" "
+          />
+        </div>
+        <button type="text" class="submit">Submit</button>
+      </div>
+    </div>
+    <main class="main">
+      <section class="blogs-section"></section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
