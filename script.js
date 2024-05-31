@@ -5,6 +5,9 @@ const submit = document.querySelector(".submit");
 const input = document.querySelectorAll("input");
 const close = document.querySelector(".close div");
 const image = document.querySelector("#Image");
+const EditAndDeleteOption = document.querySelectorAll(".icon");
+let open = false;
+let select;
 const blogs = [
   {
     id: 1,
@@ -44,13 +47,22 @@ const createBlogCard = (blog) => {
   blogImage.src = blog.image;
   blogImage.alt = blog.title;
   blogImage.classList.add("blog-image");
+  const des = document.createElement("div");
+  des.classList.add("blog-des");
   const blogTitle = document.createElement("h2");
   blogTitle.classList.add("blog-title");
   blogTitle.textContent = blog.title;
-
+  des.appendChild(blogTitle);
+  const options = document.createElement("div");
+  options.innerHTML =
+    '<i class="fa fa-ellipsis-v icon" style="font-size:24px"></i>';
   const blogCategories = document.createElement("div");
   blogCategories.classList.add("blog-categories");
-
+  const container = document.createElement("div");
+  container.classList.add("container");
+  container.innerHTML = `<ul> <li>Edit</li> <li>Delete</li> </ul>`;
+  options.appendChild(container);
+  des.appendChild(options);
   blog.categories.forEach((category) => {
     const blogCategory = document.createElement("span");
     blogCategory.textContent = category;
@@ -59,19 +71,54 @@ const createBlogCard = (blog) => {
   });
 
   blogCard.appendChild(blogImage);
-  blogCard.appendChild(blogTitle);
+  blogCard.appendChild(des);
   blogCard.appendChild(blogCategories);
 
   blogsSection.appendChild(blogCard);
 };
-
+// document.addEventListener("click", function (event) {
+//   const contain = document.querySelectorAll(".container");
+//   contain.forEach((e) => {
+//     if (open) {
+//       e.style.right = "-12%";
+//       open = false;
+//     }
+//   });
+// });
+const eventListner = () => {
+  let EditAndDeleteOption = document.querySelectorAll(".icon");
+  EditAndDeleteOption.forEach((e) => {
+    e.addEventListener("click", () => {
+      e.nextSibling.style.right = "2%";
+      open = true;
+      select = e.nextSibling;
+    });
+  });
+  EditAndDeleteOption.forEach((e) => {
+    // console.log(e.nextSibling.children[0].children[1]);
+    // console.log(e.parentElement.parentElement.parentElement);
+    e.nextSibling.children[0].children[1].addEventListener("click", () => {
+      e.parentElement.parentElement.parentElement.parentElement.removeChild(
+        e.parentElement.parentElement.parentElement
+      );
+    });
+    // e.nextSibling.children[0].children[0].addEventListener("click", () => {
+    //   formOpen();
+    //   input[0].value = ;
+    // });
+  });
+};
 blogs.forEach((blog) => {
   createBlogCard(blog);
+  eventListner();
 });
-btn.addEventListener("click", () => {
+const formOpen = () => {
   Blog.style.left = "50%";
   Blog.style.top = "50%";
   Blog.style.transform = "translate(-50%, -50%)";
+};
+btn.addEventListener("click", () => {
+  formOpen();
 });
 submit.addEventListener("click", () => {
   let add = true;
@@ -92,6 +139,7 @@ submit.addEventListener("click", () => {
     createBlogCard(newblog);
     Blog.style.left = "-100%";
   }
+  eventListner();
 });
 let imageURL = "";
 let convertToURL = () => {

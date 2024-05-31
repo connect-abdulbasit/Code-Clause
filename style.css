@@ -255,6 +255,30 @@ input #file-upload-button {
   white-space: pre-wrap;
   transition: 0.5s;
 }
+.blog-des {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container {
+  background-color: #f0f0f0;
+  position: absolute;
+  top: 75%;
+  right: -15%;
+  width: 60px;
+  text-align: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: 0.2s;
+}
+.container ul li {
+  list-style: none;
+}
+
+.container ul li:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
 .blog-title:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -274,7 +298,9 @@ input #file-upload-button {
   font-size: 0.8rem;
   text-transform: uppercase;
 }
-
+.icon {
+  cursor: pointer;
+}
 .blog-category:hover {
   background-color: #e0e0e0;
   cursor: pointer;
